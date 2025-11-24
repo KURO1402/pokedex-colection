@@ -19,18 +19,24 @@ Aplicación web para visualizar información de Pokémon, buscarlos y marcarlos 
 ## 📥 Instalación y uso
 
 1. Clona este repositorio  
-   \`\`\`
+   ```bash
    git clone https://github.com/tuusuario/pokedex.git
-   \`\`\`
+   ```
 
 2. Entra en la carpeta del proyecto  
-   \`\`\`
+   ```bash
    cd pokedex-colection
-   \`\`\`
+   ```
 
-3. npm install
+3. Instala las dependencias
+   ```bash 
+   npm install
+   ```
 
-4. npm run dev
+4. Inicia el proyecto
+   ```bash 
+   npm run dev
+   ```
 
 ## 📚 API utilizada
 
