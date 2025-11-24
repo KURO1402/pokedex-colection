@@ -1,4 +1,5 @@
 import React from 'react'
+import ButtonSearch from '../components/ButtonSearch';
 
 const Header = () => {
   return (
@@ -22,16 +23,10 @@ const Header = () => {
                 bg-white p-[0.75rem] border-none rounded-3xl text-[1rem]
                 min-w-[200px] w-full sm:w-auto sm:min-w-[250px] sm:max-w-[400px]
               "
-              placeholder="Buscar en todos los Pokémon..."
+              placeholder="Buscar Pokémon..."
             />
-
-            <button className="py-3 px-6 bg-white text-[var(--primary-color)] rounded-3xl font-bold cursor-pointer transition-all duration-300 ease-in-out whitespace-nowrap hover:bg-[#ffcb05] w-full sm:w-auto">
-              Buscar
-            </button>
-
-            <button className="py-3 px-6 bg-white text-[var(--primary-color)] rounded-3xl font-bold cursor-pointer transition-all duration-300 ease-in-out whitespace-nowrap hover:bg-[#ffcb05] w-full sm:w-auto">
-              Limpiar
-            </button>
+            <ButtonSearch>Buscar</ButtonSearch> 
+            <ButtonSearch>Limpiar</ButtonSearch>
           </div>
 
         </div>
