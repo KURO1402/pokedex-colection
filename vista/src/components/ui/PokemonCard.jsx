@@ -1,4 +1,4 @@
-import TipoSpan from "../components/TipoSpan";
+import TipoSpan from "./TipoSpan";
 
 const PokemonCard = ({ isCaptured = false, onToggleCapture, datos }) => {
     const { nombre, numero, imagen, tipos, tamaño, peso } = datos;
@@ -85,7 +85,7 @@ const PokemonCard = ({ isCaptured = false, onToggleCapture, datos }) => {
 
                 {/* Nombre del Pokémon */}
                 <div className="relative z-10 mb-3">
-                    <div className={`font-bold text-xl capitalize text-center transition-colors duration-300 ${isCaptured ? 'text-green-800' : 'text-gray-800'
+                    <div className={`font-bold text-xl capitalize text-center transition-colors duration-300 ${isCaptured ? 'text-green-800' : 'text-gray-800 truncate'
                         }`}>
                         {nombre}
                     </div>

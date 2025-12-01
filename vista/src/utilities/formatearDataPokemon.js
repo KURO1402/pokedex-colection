@@ -18,6 +18,5 @@ export const formatearDataPokemon = (pokemones) => {
             peso: data.weight
         };
     });
-
     return pokemonesFormateados;
 };

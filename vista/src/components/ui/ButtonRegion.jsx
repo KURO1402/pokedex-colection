@@ -1,5 +1,3 @@
-import React from 'react'
-
 const ButtonRegion = ({ children, estado, onclick }) => {
   return (
     <button
