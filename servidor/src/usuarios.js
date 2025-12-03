@@ -22,7 +22,7 @@ export const registrarUsuarioController = async (req, res) => {
     }
 
     const result = await pool.query(
-      "INSERT INTO usuarios(nombre, clave) VALUES ($1, md5($2)) RETURNING id_usuario, nombre",
+      "INSERT INTO usuarios(nombre, clave) VALUES ($1, md5($2)) RETURNING id_usuario, nombre, id_rol",
       [usuario, clave]
     );
 
@@ -55,7 +55,7 @@ export const loginUsuarioController = async (req, res) => {
     const { usuario, clave } = req.body;
 
     const result = await pool.query(
-      "SELECT id_usuario, nombre FROM usuarios WHERE nombre = $1 AND clave = md5($2)",
+      "SELECT id_usuario, nombre, id_rol FROM usuarios WHERE nombre = $1 AND clave = md5($2)",
       [usuario, clave]
     );
 
