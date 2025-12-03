@@ -42,9 +42,9 @@ export const registrarUsuarioController = async (req, res) => {
   } catch (error) {
     console.error("Error al registrar usuario:", error.message);
 
-    return res.status(500).json({
+    return res.status(error.status || 500).json({
       estado: false,
-      mensaje: "Error interno del servidor"
+      mensaje: error.message || "Error interno del servidor"
     });
   }
 };
@@ -82,9 +82,9 @@ export const loginUsuarioController = async (req, res) => {
   } catch (error) {
     console.error("Error en login:", error.message);
 
-    return res.status(500).json({
+    return res.status(error.status || 500).json({
       estado: false,
-      mensaje: "Error interno del servidor"
+      mensaje: error.message || "Error interno del servidor"
     });
   }
 };

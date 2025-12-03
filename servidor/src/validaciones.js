@@ -1,24 +1,21 @@
 export const validarUsaurioClave = (datos) => {
     if (!datos || typeof datos !== "object") {
-      return res.status(400).json({
-        estado: false,
-        mensaje: "Se necesita usuario y contraseña para registrar al usuario"
-      });
+      const error = new Error("Se necesita usuario y contraseña para registrar al usuario");
+      error.status = 400;
+      throw error;
     }
 
     const { usuario, clave } = datos;
 
     if (!usuario || typeof usuario !== "string" || !usuario.trim()) {
-      return res.status(400).json({
-        estado: false,
-        mensaje: "Se necesita nombre de usuario"
-      });
+      const error = new Error("Se necesita nombre de usuario");
+      error.status = 400;
+      throw error;
     }
 
     if (!clave || typeof clave !== "string" || !clave.trim()) {
-      return res.status(400).json({
-        estado: false,
-        mensaje: "Se necesita su contraseña"
-      });
+      const error = new Error("Se necesita su contraseña");
+      error.status = 400;
+      throw error;
     }
 }
