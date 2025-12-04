@@ -11,5 +11,5 @@ app.use("/",router);
 const PORT = process.env.PORT || 3003;
 
 app.listen(PORT, () => {
-  console.log(`Example app listening on port ${PORT}`)
+  console.log(`Servidor corriendo en http://localhost:${PORT}`)
 })

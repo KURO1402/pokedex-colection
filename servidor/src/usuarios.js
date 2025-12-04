@@ -17,7 +17,7 @@ export const registrarUsuarioController = async (req, res) => {
     if (usuarioExiste.rows.length > 0) {
       return res.status(409).json({
         estado: false,
-        mensaje: "El usuario ya existe"
+        mensaje: "El nombre de usuario ya esta en uso"
       });
     }
 
@@ -101,12 +101,31 @@ export const cambiarRolUsuarioController = async (req, res) => {
       error.status = 400;
       throw error;
     }
+    const resultado = await pool.query(
+      "SELECT id_usuario, nombre, id_rol FROM usuarios WHERE id_usuario = $1",
+      [idUsuario]
+    );
+
+    if (resultado.rows.length === 0) {
+      const error = new Error("Usuario no encontrado");
+      error.status = 404;
+      throw error;
+    }
+
+    const user = resultado.rows[0];
+
+    if (user.id_rol === 2) {
+      const error = new Error("No puedes cambiar el rol a un administrador");
+      error.status = 403;
+      throw error;
+    }
+
     const result = await pool.query("UPDATE usuarios SET id_rol = $1 WHERE id_usuario = $2", [idRol, idUsuario]);
-    if(result.rowCount === 0){
+    if (result.rowCount === 0) {
       throw new Error("No se pudo actualizar rol de usuario");
     }
 
-    return res.status(200).json({mensaje: "Rol de usuario actualizado correctamente"});
+    return res.status(200).json({ mensaje: "Rol de usuario actualizado correctamente" });
 
   } catch (error) {
     console.error("Error al cambiar rol usuario:", error.message);

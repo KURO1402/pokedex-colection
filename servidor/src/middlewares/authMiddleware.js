@@ -10,9 +10,21 @@ export const verificarToken = (req, res, next) => {
     }
     jwt.verify(token, process.env.JWT_SECRET_KEY, (err, usuario) => {
         if (err) {
-            return res.status(403).json({ message: 'Token inválido o expirado' });
+            return res.status(403).json({ estado: false, mensaje: 'Token inválido o expirado' });
         }
         req.usuario = usuario;
         next();
     });
 }
+
+export const verificarRoles = (...rolesPermitidos) => {
+  return (req, res, next) => {
+    const { id_rol } = req.usuario;
+
+    if (!rolesPermitidos.includes(id_rol)) {
+      return res.status(403).json({ estado: false, mensage: 'No tienes permitido hacer esa accion.' });
+    }
+
+    next();
+  };
+};
